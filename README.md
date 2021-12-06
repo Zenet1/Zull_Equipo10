@@ -1,1 +1,0 @@
-# Zull_Equipo10
