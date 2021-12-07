@@ -1,0 +1,32 @@
+{
+"outside":[
+	"null",
+	"theatre",
+	"lab"	
+	"pub"	
+	]
+"theatre":[
+	"null",
+	"null",
+	"null"	
+	"outside"
+	]
+"pub":[
+	"null",
+	"outside",
+	"null"	
+	"null"	
+	]
+"office":[
+	"null",
+	"null",
+	"null"	
+	"lab"	
+	]
+"lab":[
+	"outside",
+	"office",
+	"null"	
+	"null"	
+	]
+}
