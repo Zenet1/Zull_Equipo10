@@ -12,16 +12,49 @@ public class Room {
     }
 
     public void initializeExits(Room north, Room east, Room south, Room west) {
-        if (north != null)
-            northExit = north;
-        if (east != null)
-            eastExit = east;
-        if (south != null)
-            southExit = south;
-        if (west != null)
-            westExit = west;
+        setNorthExit(north);
+        setEastExit(east);
+        setSouthExit(south);
+        setWestExit(west);
     }
 
+    // methods setter
+    public void setNorthExit(Room north) {
+        if (north != null)
+            this.northExit = north;
+    }
+
+    public void setEastExit(Room east) {
+        if (east != null)
+            this.eastExit = east;
+    }
+
+    public void setSouthExit(Room south) {
+        if (south != null)
+            this.southExit = south;
+    }
+
+    public void setWestExit(Room west) {
+        if (west != null)
+            this.westExit = west;
+    }
+
+    // methods getter
+    public Room getNorthExit() {
+        return this.northExit;
+    }
+
+    public Room getEastExit() {
+        return this.eastExit;
+    }
+
+    public Room getSouthExit() {
+        return this.southExit;
+    }
+
+    public Room getWestExit() {
+        return this.westExit;
+    }
     /*
      * Previous function "initializeExits" that implements the ArrayList object,
      * handling the exits as String objects.
@@ -44,11 +77,11 @@ public class Room {
     }
 
     public void printExits() {
-        System.out.println("-Nombre del cuarto: " + this.roomName + "-\n");
-        System.out.println("North Exit: " + this.northExit + "\n");
-        System.out.println("South Exit: " + this.southExit + "\n");
-        System.out.println("East Exit: " + this.eastExit + "\n");
-        System.out.println("West Exit: " + this.westExit + "\n");
+        System.out.println("-Room's name: " + getRoomName() + "-\n");
+        System.out.println("North Exit: " + getNorthExit() + "\n");
+        System.out.println("South Exit: " + getSouthExit() + "\n");
+        System.out.println("East Exit: " + getEastExit() + "\n");
+        System.out.println("West Exit: " + getWestExit() + "\n");
 
     }
 }
