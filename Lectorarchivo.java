@@ -9,15 +9,14 @@ import org.json.simple.parser.*;
 
 public class Lectorarchivo {
 
-    public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
-        
+     public String[][] comprobar(String DocumentoALeer){
         ArrayList<String> jsonArr = new ArrayList<>();
         JSONParser parser = new JSONParser();
-        String[][] arreglo= new String[15][5];
-        try {
-            Object obj = parser.parse(new FileReader("Prueba.txt"));
+        try{
+            Object obj = parser.parse(new FileReader(DocumentoALeer));
             JSONObject jsonObject = (JSONObject)obj;
             String[] a = (((((jsonObject.keySet()).toString()).replace(" ","")).replace("[","")).replace("]","")).split(",");
+            String[][] arreglo= new String[a.length][5];
             for(int x=0;x!=a.length;x++){
                 arreglo[x][0]=a[x];
                 String[] parts = (((((jsonObject.get(a[x]).toString()).replace("[","")).replace("]","").replace('"',' ')).replace(" ",""))).split(",");
@@ -25,11 +24,12 @@ public class Lectorarchivo {
                 arreglo[x][2]=parts[1];
                 arreglo[x][3]=parts[2];
                 arreglo[x][4]=parts[3];
-                System.out.println(arreglo[x][0]+"->"+arreglo[x][1]+","+arreglo[x][2]+","+arreglo[x][3]+","+arreglo[x][4]);
             }
-        } catch(Exception e) {
+            return(arreglo);
+        }catch(Exception e) {
             e.printStackTrace();
         }
-        }
+        return null;
+    }
     
 }
