@@ -1,6 +1,6 @@
 
 public class Process{
-    private Command command;
+    public Command command;
     public Process(Command command) {
         this.command = command;
     }
@@ -19,19 +19,19 @@ public class Process{
         return 0;
     }
 
-    boolean quit(Command command){
-        boolean yesNull;
+    boolean quit(){
+        boolean isNull;
         if(command.getSecondaryCommand().equals("NOWHERE")){
-            yesNull = true;
-            return yesNull;
+            isNull = true;
+            return isNull;
         }else{
-            yesNull = false;
-            return yesNull;
+            isNull = false;
+            return isNull;
         }
         
     };
 
-    boolean nowhere(Command command){
+    boolean nowhere(){
         if(command.getSecondaryCommand().equals("NOWHERE")){
  
             return false;
@@ -41,14 +41,18 @@ public class Process{
         }
     }
 
-    public boolean isUnknown(Command command){
+    public boolean isUnknown(){
         if(command.getMainCommand()==null){
             return true;
         }else{
             return false;
         }
     }
-
+/*
+    public Command getCommand(){
+        return this.command;
+    }
+*/
 
 
 

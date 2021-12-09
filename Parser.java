@@ -10,9 +10,11 @@ public class Parser {
     }
 
     public Command createCommand(){
+
+      
      
-        if(verify(word1)) {
-            if(verifyDir(word2)){
+        if(verify(word1)==true) {
+            if(verifyDir(word2)==true){
                 return new Command(word1, word2);
             }else{
                 return new Command(word1, null);
@@ -27,7 +29,7 @@ public class Parser {
     boolean verify(String command){
         boolean exit = false;
         for (int i = 0; i < words.length; i++) {
-            if(command == words[0]){
+            if(command.equals(words[i])){
                 exit = true;
                 break;
             }
@@ -39,7 +41,7 @@ public class Parser {
         boolean exit = false;
         if(command != null){
             for (int i = 0; i < directions.length; i++) {
-                if(command == words[0]){
+                if(command.equals( directions[i])){
                     exit = true;
                     break;
                 }
