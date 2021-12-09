@@ -7,8 +7,16 @@ public class Room {
     public Room eastExit;
     public Room westExit;
 
-    public Room(String roomName) {
-        this.roomName = roomName;
+    public Room(String name) {
+        setName(name);
+    }
+
+    public Room(String name, Room north, Room east, Room south, Room west) {
+        setName(name);
+        setNorthExit(north);
+        setEastExit(east);
+        setSouthExit(south);
+        setWestExit(west);
     }
 
     public void initializeExits(Room north, Room east, Room south, Room west) {
@@ -19,6 +27,10 @@ public class Room {
     }
 
     // methods setter
+    public void setName(String name) {
+        this.roomName = name;
+    }
+
     public void setNorthExit(Room north) {
         if (north != null)
             this.northExit = north;
@@ -55,22 +67,6 @@ public class Room {
     public Room getWestExit() {
         return this.westExit;
     }
-    /*
-     * Previous function "initializeExits" that implements the ArrayList object,
-     * handling the exits as String objects.
-     * 
-     * Function replaced by the actual function called for the same name.
-     * In process to determining which implementation will be more convenient.
-     * public void initializeExits(String name, ArrayList<String> exits) {
-     * this.roomName = name;
-     * if (exits.size() == 4) {
-     * this.northExit = exits.get(0);
-     * this.southExit = exits.get(1);
-     * this.eastExit = exits.get(2);
-     * this.westExit = exits.get(3);
-     * }
-     * }
-     */
 
     public String getRoomName() {
         return this.roomName;
@@ -78,10 +74,31 @@ public class Room {
 
     public void printExits() {
         System.out.println("-Room's name: " + getRoomName() + "-\n");
-        System.out.println("North Exit: " + getNorthExit() + "\n");
-        System.out.println("South Exit: " + getSouthExit() + "\n");
-        System.out.println("East Exit: " + getEastExit() + "\n");
-        System.out.println("West Exit: " + getWestExit() + "\n");
+        String north, south, east, west;
+        if (getNorthExit() != null) {
+            north = getNorthExit().getRoomName();
+        } else {
+            north = "null";
+        }
+        if (getSouthExit() != null) {
+            south = getSouthExit().getRoomName();
+        } else {
+            south = "null";
+        }
+        if (getEastExit() != null) {
+            east = getEastExit().getRoomName();
+        } else {
+            east = "null";
+        }
+        if (getWestExit() != null) {
+            west = getWestExit().getRoomName();
+        } else {
+            west = "null";
+        }
+        System.out.println("North Exit: " + north + "\n");
+        System.out.println("South Exit: " + south + "\n");
+        System.out.println("East Exit: " + east + "\n");
+        System.out.println("West Exit: " + west + "\n");
 
     }
 }
