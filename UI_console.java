@@ -15,15 +15,27 @@ public class UI_console{
     }
 
     public void printCurrent(/*Room room*/){
-        
+        System.out.println("You are "/* + currentRoom.getDescription()*/);/*
+        System.out.print("Exits: ");
+        if (currentRoom.northExit != null) {
+            System.out.print("north ");
+        }
+        if (currentRoom.eastExit != null) {
+            System.out.print("east ");
+        }
+        if (currentRoom.southExit != null) {
+            System.out.print("south ");
+        }
+        if (currentRoom.westExit != null) {
+            System.out.print("west ");
+        }*/
+        System.out.println(); 
     }
 
     public void printWhere(){System.out.println("Go where?");}
-
     public void printNoDoor(){System.out.println("There is no door!");}
-
     public void printInvalid(){System.out.println("I don't know what you mean...");}
-
+    public void printInCommand(){System.out.print("> ");}
     public void printQuit(boolean bool){
         if(bool==true){
             System.out.println("Quit what?");
