@@ -1,7 +1,8 @@
 public class UI_console{
 
-    public UI_console(){
+    public UI_console(Room currentRoom){
         printWelcome();
+        printCurrent(currentRoom);
         
     }
 
@@ -14,7 +15,7 @@ public class UI_console{
         System.out.println();
     }
 
-    public void printCurrent(/*Room room*/){
+    public void printCurrent(Room currentRoom){
         System.out.println("You are "/* + currentRoom.getDescription()*/);/*
         System.out.print("Exits: ");
         if (currentRoom.northExit != null) {
@@ -36,12 +37,11 @@ public class UI_console{
     public void printNoDoor(){System.out.println("There is no door!");}
     public void printInvalid(){System.out.println("I don't know what you mean...");}
     public void printInCommand(){System.out.print("> ");}
-    public void printQuit(boolean bool){
-        if(bool==true){
-            System.out.println("Quit what?");
-        }else{
-            System.out.println("Thank you for playing.  Good bye.");
-        }
+    public void printQuitFalse(){ 
+        System.out.println("Quit what?");
+    }
+    public void printQuit(){
+        System.out.println("Thank you for playing.  Good bye.");
     }
 
     public void printHelp()
