@@ -71,7 +71,7 @@ public class Game{
     }
 
     private void goCase(){
-        if(process.nowhere()){
+        if(!process.nowhere()){
             view.printWhere();
             return;
         }
@@ -82,7 +82,6 @@ public class Game{
         }
 
         for (Room room : rooms) {
-            System.out.print(room.getRoomName()); 
             if(nextRoom.getRoomName().equals(room.getRoomName())){
                 currentRoom = room;
                 break;
