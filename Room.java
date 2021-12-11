@@ -56,13 +56,13 @@ public class Room {
             setNorthExit(north);
         }
         if (isNotNullRoom(east)) {
-            setNorthExit(east);
+            setEastExit(east);
         }
         if (isNotNullRoom(south)) {
-            setNorthExit(south);
+            setSouthExit(south);
         }
         if (isNotNullRoom(west)) {
-            setNorthExit(west);
+            setWestExit(west);
         }
     }
 
