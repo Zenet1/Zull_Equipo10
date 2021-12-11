@@ -6,15 +6,15 @@
 	"pub"	
 	]
 "theatre":[
+	"outside"
 	"null",
 	"null",
 	"null"	
-	"outside"
 	]
 "pub":[
 	"null",
-	"outside",
 	"null"	
+	"outside"
 	"null"	
 	]
 "office":[
@@ -24,9 +24,9 @@
 	"lab"	
 	]
 "lab":[
-	"outside",
-	"office",
 	"null"	
 	"null"	
+	"office"
+	"outside"	
 	]
 }

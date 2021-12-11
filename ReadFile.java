@@ -3,48 +3,47 @@ import java.io.FileReader;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 
-public class Lectorarchivo {
-
-    public String[] GetJsonKeys(JSONObject jsonObject) {
+public class ReadFile {
+    public String[] getJsonKeys(JSONObject jsonObject) {
         String Keys = (jsonObject.keySet()).toString();
         Keys = Keys.replace(" ", "");
         Keys = Keys.replace("[", "");
         Keys = Keys.replace("]", "");
-        String[] KeysArrangement = Keys.split(",");
-        return KeysArrangement;
+        String[] KeysArray = Keys.split(",");
+        return KeysArray;
     }
 
-    public String[] GenerateAdjacentRoomsArrrangement(JSONObject jsonObject, String[] KeysArrangement, int index) {
-        String AdjacentRooms = jsonObject.get(KeysArrangement[index]).toString();
+    public String[] generateAdjacentRoomsArrrangement(JSONObject jsonObject, String[] KeysArray, int index) {
+        String AdjacentRooms = jsonObject.get(KeysArray[index]).toString();
         AdjacentRooms = AdjacentRooms.replace("[", "");
         AdjacentRooms = AdjacentRooms.replace("]", "");
         AdjacentRooms = AdjacentRooms.replace('"', ' ');
         AdjacentRooms = AdjacentRooms.replace(" ", "");
-        String[] AdjacentRoomsArrangement = AdjacentRooms.split(",");
-        return AdjacentRoomsArrangement;
+        String[] AdjacentRoomsArray = AdjacentRooms.split(",");
+        return AdjacentRoomsArray;
     }
 
-    public String[][] setRoomArragment(String[] KeysArrangement, JSONObject jsonObject, String[][] RoomsArrangement) {
+    public String[][] setRoomArragment(String[] KeysArray, JSONObject jsonObject, String[][] RoomsArray) {
         int index = 0;
-        String[] AdjacentRoomsArrangement;
+        String[] AdjacentRoomsArray;
         try {
-            for (index = 0; index != KeysArrangement.length; index++) {
-                AdjacentRoomsArrangement = GenerateAdjacentRoomsArrrangement(jsonObject, KeysArrangement, index);
-                RoomsArrangement[index][0] = KeysArrangement[index];
+            for (index = 0; index != KeysArray.length; index++) {
+                AdjacentRoomsArray = generateAdjacentRoomsArrrangement(jsonObject, KeysArray, index);
+                RoomsArray[index][0] = KeysArray[index];
                 for (int column = 1; column != 5; column++) {
-                    RoomsArrangement[index][column] = AdjacentRoomsArrangement[column - 1];
+                    RoomsArray[index][column] = AdjacentRoomsArray[column - 1];
                 }
             }
-            return RoomsArrangement;
+            return RoomsArray;
         } catch (ArrayIndexOutOfBoundsException error) {
-            System.out.println("El cuarto " + RoomsArrangement[index][0]
+            System.out.println("El cuarto " + RoomsArray[index][0]
                     + " no tiene bien definido sus 4 cuartos adyacentes, verificalo y vuelve a correr");
             System.exit(0);
         }
-        return RoomsArrangement;
+        return RoomsArray;
     }
 
-    public JSONObject GetJsonProperities(String Doc) {
+    public JSONObject getJsonProperities(String Doc) {
         JSONObject jsonObject = null;
         try {
             JSONParser parser = new JSONParser();
@@ -58,8 +57,8 @@ public class Lectorarchivo {
 
     }
 
-    public boolean DocExist(String DocumentoALeer) {
-        File archivo = new File(DocumentoALeer);
+    public boolean docExist(String DocToRead) {
+        File archivo = new File(DocToRead);
         if (!archivo.exists()) {
             System.out.println("OJO: ¡¡No existe el archivo de configuración!!");
             return false;
@@ -67,10 +66,10 @@ public class Lectorarchivo {
         return true;
     }
 
-    public String[][] comprobar(String DocumentoALeer) {
-        DocExist(DocumentoALeer);
-        JSONObject jsonObject = GetJsonProperities(DocumentoALeer);
-        String[] KeysArrangement = GetJsonKeys(jsonObject);
+    public String[][] getArrayRooms(String DocToRead) {
+        docExist(DocToRead);
+        JSONObject jsonObject = getJsonProperities(DocToRead);
+        String[] KeysArrangement = getJsonKeys(jsonObject);
         String[][] RoomsArrangement = new String[KeysArrangement.length][5];
         RoomsArrangement = setRoomArragment(KeysArrangement, jsonObject, RoomsArrangement);
         RoomsOrderAnalyzer Analyzer = new RoomsOrderAnalyzer(KeysArrangement, RoomsArrangement);
@@ -79,5 +78,4 @@ public class Lectorarchivo {
         }
         return (RoomsArrangement);
     }
-
 }

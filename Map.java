@@ -9,9 +9,9 @@ public class Map {
     }
 
     private void initializeRooms() {
-        Lectorarchivo lector = new Lectorarchivo();
+        ReadFile reader = new ReadFile();
         String[][] arrayRooms = new String[15][4];
-        arrayRooms = lector.comprobar("Prueba.txt");
+        arrayRooms = reader.getArrayRooms("Prueba.txt");
         setRooms(arrayRooms);
     }
 
