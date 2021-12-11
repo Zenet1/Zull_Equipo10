@@ -5,42 +5,42 @@ public class Map {
 
     public Map() {
         rooms = new ArrayList();
-        initializeRooms();
+        initializeMap();
     }
 
-    private void initializeRooms() {
+    private void initializeMap() {
         ReadFile reader = new ReadFile();
         String[][] arrayRooms = new String[15][4];
         arrayRooms = reader.getArrayRooms("Prueba.txt");
-        setRooms(arrayRooms);
+        initializeRooms(arrayRooms);
     }
 
-    public void setRooms(String[][] arrayRooms) {
+    private void initializeRooms(String[][] arrayRooms) {
         for (int i = 0; i < arrayRooms.length; i++) {
             Room actualRoom = new Room(arrayRooms[i][0]);
             Room north = new Room("null");
             Room south = new Room("null");
             Room east = new Room("null");
             Room west = new Room("null");
-            if (!arrayRooms[i][1].equals("null")) {
+            if (!isEqualToNull(arrayRooms[i][1])) {
                 north.setRoomName(arrayRooms[i][1]);
-                // Room north = new Room(arrayRooms[i][1]);
             }
-            if (!arrayRooms[i][2].equals("null")) {
+            if (!isEqualToNull(arrayRooms[i][2])) {
                 south.setRoomName(arrayRooms[i][2]);
-                // Room south = new Room(arrayRooms[i][2]);
             }
-            if (!arrayRooms[i][3].equals("null")) {
+            if (!isEqualToNull(arrayRooms[i][3])) {
                 east.setRoomName(arrayRooms[i][3]);
-                // Room east = new Room(arrayRooms[i][3]);
             }
-            if (!arrayRooms[i][4].equals("null")) {
+            if (!isEqualToNull(arrayRooms[i][4])) {
                 west.setRoomName(arrayRooms[i][4]);
-                // Room west = new Room(arrayRooms[i][4]);
             }
             actualRoom.initializeExits(north, east, south, west);
             rooms.add(actualRoom);
         }
+    }
+
+    private boolean isEqualToNull(String name) {
+        return (name.equals("null"));
     }
 
     public ArrayList<Room> getRooms() {
