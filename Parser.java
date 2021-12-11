@@ -10,46 +10,24 @@ public class Parser {
     }
 
     public Command createCommand(){
-
-      
-     
-        if(verify(word1)==true) {
-            if(verifyDir(word2)==true){
+        if(verify(word1,words)==true) {
+            if(verify(word2,directions)==true){
                 return new Command(word1, word2);
             }else{
                 return new Command(word1, null);
-            }  
-               
+            }       
         }
         else {
-            return new Command(null, word2); 
+            return new Command(null, null); 
         }
     }
-
-    boolean verify(String command){
-        boolean exit = false;
-        for (int i = 0; i < words.length; i++) {
-            if(command.equals(words[i])){
-                exit = true;
-                break;
+    
+    boolean verify(String command, String[] array){
+        for (int i = 0; i < array.length; i++) {
+            if(command.equals(array[i])){
+                return true;
             }
         }
-        return exit;
+        return false;
     }
-
-    boolean verifyDir(String command){
-        boolean exit = false;
-        if(command != null){
-            for (int i = 0; i < directions.length; i++) {
-                if(command.equals( directions[i])){
-                    exit = true;
-                    break;
-                }
-            }
-        }
-        
-        return exit;
-    }
-
-
 }

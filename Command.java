@@ -2,11 +2,10 @@ public class Command {
     private String mainCommand;
     private String secondaryCommand;
 
-    public Command(String first, String second) {
-        this.mainCommand = first;
-        this.secondaryCommand = second;
+    public Command(String firstWord, String secondWord) {
+        this.mainCommand = firstWord;
+        this.secondaryCommand = secondWord;
     }
-
     public String getSecondaryCommand() {
         if(secondaryCommand == null){
             return "NOWHERE";
