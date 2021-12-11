@@ -8,6 +8,10 @@ public class Map {
         initializeMap();
     }
 
+    /*
+     * Method focused on the use of the interface of the ReadFile class.
+     * Passes the array returned by the interface to the initializeRooms method.
+     */
     private void initializeMap() {
         ReadFile reader = new ReadFile();
         String[][] arrayRooms = new String[15][4];
@@ -15,6 +19,11 @@ public class Map {
         initializeRooms(arrayRooms);
     }
 
+    /*
+     * Method that traverses the array passed by parameter to initialize the Room
+     * Objects andimmediate exits of the Rooms. Adds the list of rooms to a data
+     * structure of type ArrayList.
+     */
     private void initializeRooms(String[][] arrayRooms) {
         for (int i = 0; i < arrayRooms.length; i++) {
             Room actualRoom = new Room(arrayRooms[i][0]);
