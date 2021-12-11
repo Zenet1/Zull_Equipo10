@@ -1,3 +1,5 @@
+package Src;
+
 public class Command {
     private String mainCommand;
     private String secondaryCommand;
@@ -6,23 +8,22 @@ public class Command {
         this.mainCommand = firstWord;
         this.secondaryCommand = secondWord;
     }
+
     public String getSecondaryCommand() {
-        if(secondaryCommand == null){
+        if (secondaryCommand == null) {
             return "NOWHERE";
-        }else{
-            
-           return getDirection();
+        } else {
+
+            return getDirection();
         }
     }
 
-    private String getDirection(){
+    private String getDirection() {
         return secondaryCommand;
     }
 
-    public String getMainCommand(){
+    public String getMainCommand() {
         return mainCommand;
     }
-
-
 
 }

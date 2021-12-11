@@ -1,3 +1,4 @@
+package Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -6,8 +7,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import Src.Parser;
+
 public class ParserTest {
     public static Parser parseado;
+    private String words[] = { "go", "help", "quit" };
+    private String directions[] = { "north", "south", "east", "west" };
 
     @Before
     public void init() {
@@ -16,17 +21,17 @@ public class ParserTest {
 
     @Test
     public void testVerify() {
-        assertTrue(parseado.verify("go"));
+        assertTrue(parseado.verify("go", words));
     }
 
     @Test
     public void testVerifyA() {
-        assertFalse(parseado.verify("jump"));
+        assertFalse(parseado.verify("jump", words));
     }
 
     @Test
     public void testVerifyDir() {
-        assertTrue(parseado.verifyDir("north"));
+        assertTrue(parseado.verify("north", directions));
     }
 
     @After

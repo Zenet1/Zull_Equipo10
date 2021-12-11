@@ -1,3 +1,4 @@
+package Src;
 
 public class RoomsOrderAnalyzer {
     private String[] KeysArray;
@@ -22,6 +23,7 @@ public class RoomsOrderAnalyzer {
         return true;
     }
 
+    // verify if all the rooms have exit doors
     public boolean allRoomsHaveExits() {
         for (Index = 0; Index != KeysArray.length; Index++) {
             for (int y = 1; y != 5; y++) {
@@ -71,6 +73,9 @@ public class RoomsOrderAnalyzer {
         return true;
     }
 
+    // Check that the rooms are connected, that is
+    // If the rooms lab has as a north exit gym, then the south exit of gym has
+    // rooms lab
     public boolean coordinatedExits() {
         for (Index = 0; Index != KeysArray.length; Index++) {
             for (int Index2 = 1; Index2 != 5; Index2++) {
