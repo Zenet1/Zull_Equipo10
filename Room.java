@@ -1,57 +1,40 @@
-import java.util.ArrayList;
-
 public class Room {
-    public String roomName;
-    public Room northExit;
-    public Room southExit;
-    public Room eastExit;
-    public Room westExit;
+    private String roomName;
+    private Room northExit;
+    private Room southExit;
+    private Room eastExit;
+    private Room westExit;
 
     public Room(String name) {
-        setName(name);
-    }
-
-    public Room(String name, Room north, Room east, Room south, Room west) {
-        setName(name);
-        setNorthExit(north);
-        setEastExit(east);
-        setSouthExit(south);
-        setWestExit(west);
-    }
-
-    public void initializeExits(Room north, Room east, Room south, Room west) {
-        setNorthExit(north);
-        setEastExit(east);
-        setSouthExit(south);
-        setWestExit(west);
+        setRoomName(name);
     }
 
     // methods setter
-    public void setName(String name) {
+    public void setRoomName(String name) {
         this.roomName = name;
     }
 
     public void setNorthExit(Room north) {
-        if (north != null)
-            this.northExit = north;
+        this.northExit = north;
     }
 
     public void setEastExit(Room east) {
-        if (east != null)
-            this.eastExit = east;
+        this.eastExit = east;
     }
 
     public void setSouthExit(Room south) {
-        if (south != null)
-            this.southExit = south;
+        this.southExit = south;
     }
 
     public void setWestExit(Room west) {
-        if (west != null)
-            this.westExit = west;
+        this.westExit = west;
     }
 
     // methods getter
+    public String getRoomName() {
+        return this.roomName;
+    }
+
     public Room getNorthExit() {
         return this.northExit;
     }
@@ -68,37 +51,22 @@ public class Room {
         return this.westExit;
     }
 
-    public String getRoomName() {
-        return this.roomName;
+    public void initializeExits(Room north, Room east, Room south, Room west) {
+        if (isNotNullRoom(north)) {
+            setNorthExit(north);
+        }
+        if (isNotNullRoom(east)) {
+            setEastExit(east);
+        }
+        if (isNotNullRoom(south)) {
+            setSouthExit(south);
+        }
+        if (isNotNullRoom(west)) {
+            setWestExit(west);
+        }
     }
 
-    public void printExits() {
-        System.out.println("-Room's name: " + getRoomName() + "-\n");
-        String north, south, east, west;
-        if (getNorthExit() != null) {
-            north = getNorthExit().getRoomName();
-        } else {
-            north = "null";
-        }
-        if (getSouthExit() != null) {
-            south = getSouthExit().getRoomName();
-        } else {
-            south = "null";
-        }
-        if (getEastExit() != null) {
-            east = getEastExit().getRoomName();
-        } else {
-            east = "null";
-        }
-        if (getWestExit() != null) {
-            west = getWestExit().getRoomName();
-        } else {
-            west = "null";
-        }
-        System.out.println("North Exit: " + north + "\n");
-        System.out.println("South Exit: " + south + "\n");
-        System.out.println("East Exit: " + east + "\n");
-        System.out.println("West Exit: " + west + "\n");
-
+    private boolean isNotNullRoom(Room room) {
+        return (room != null);
     }
 }
